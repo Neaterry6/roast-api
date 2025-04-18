@@ -19,6 +19,12 @@ module.exports = [
   "You're the human embodiment of a participation trophy.",
   "I would agree with you, but then we’d both be wrong.",
   "You are proof that even a broken clock is right twice a day.","You're like a software update. Whenever I see you, I think, 'Not now.'",
+  "Pain is when your dad realized he should've just kept the condom on.",
+  "You have the brain of a rock, but the looks of a potato.",
+  "Your personality is like a cloud, once it disappears, it’s a beautiful day.",
+  "If ignorance is bliss, you must be the happiest person alive.",
+  "Your mom is so fat, when she steps on the scale it says 'one at a time, please!'",
+  "You're proof that even a broken clock is right twice a day."
   
   // More deep savage roasts
   "You’re like a cloud. When you disappear, it’s a beautiful day.",
