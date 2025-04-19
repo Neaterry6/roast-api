@@ -1,26 +1,29 @@
-
 {
-  "name": "savage-roast-api",
+  "name": "roast-api",
   "version": "1.0.0",
-  "description": "A simple API that returns savage, funny, and light-hearted roasts.",
+  "description": "A fun and savage Roast API providing various roasts and burns.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "express": "^4.18.2"
   },
-  "engines": {
-    "node": ">=14.0.0"
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Neaterry6/roast-api"
   },
+  "keywords": [
+    "roast",
+    "api",
+    "fun",
+    "burns",
+    "humor"
+  ],
   "author": "Ayanfe",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Neaterry6/roast-api"
-  },
-  "homepage": "https://github.com/your-username/savage-roast-api#readme"
+  "license": "MIT"
 }
