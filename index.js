@@ -1,63 +1,44 @@
-
-// Importing the express module to create the server
 const express = require('express');
+const { savageRoasts, lightRoasts, generalRoasts, savageBurns, funnyRoasts, personalizedRoasts } = require('./roast');
 
-// Import the roast data from roast.js
-const roast = require('./roast');
-
-// Creating the Express app
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Basic route for the API root (optional)
-app.get('/', (req, res) => {
-  res.send('Welcome to the Savage Roast API! Use /roast to get a roast');
-});
+// Middleware to parse JSON
+app.use(express.json());
 
-// Endpoint to get a random savage roast
+// Routes
 app.get('/roast/savage', (req, res) => {
-  const randomIndex = Math.floor(Math.random() * roast.savageRoasts.length);
-  const randomRoast = roast.savageRoasts[randomIndex];
-  res.json({ roast: randomRoast });
+  res.json({ roast: savageRoasts[Math.floor(Math.random() * savageRoasts.length)] });
 });
 
-// Endpoint to get a random light roast
 app.get('/roast/light', (req, res) => {
-  const randomIndex = Math.floor(Math.random() * roast.lightRoasts.length);
-  const randomRoast = roast.lightRoasts[randomIndex];
-  res.json({ roast: randomRoast });
+  res.json({ roast: lightRoasts[Math.floor(Math.random() * lightRoasts.length)] });
 });
 
-// Endpoint to get a random general roast
-app.get('/roast/general', (req, res) => {const randomIndex = Math.floor(Math.random() * roast.generalRoasts.length);
-  const randomRoast = roast.generalRoasts[randomIndex];
-  res.json({ roast: randomRoast });
+app.get('/roast/general', (req, res) => {
+  res.json({ roast: generalRoasts[Math.floor(Math.random() * generalRoasts.length)] });
 });
 
-// Endpoint to get a random savage burn
-app.get('/roast/burn', (req, res) => {
-  const randomIndex = Math.floor(Math.random() * roast.savageBurns.length);
-  const randomRoast = roast.savageBurns[randomIndex];
-  res.json({ roast: randomRoast });
+app.get('/roast/savage-burn', (req, res) => {
+  res.json({ roast: savageBurns[Math.floor(Math.random() * savageBurns.length)] });
 });
 
-// Endpoint to get a random funny roast
 app.get('/roast/funny', (req, res) => {
-  const randomIndex = Math.floor(Math.random() * roast.funnyRoasts.length);
-  const randomRoast = roast.funnyRoasts[randomIndex];
-  res.json({ roast: randomRoast });
+  res.json({ roast: funnyRoasts[Math.floor(Math.random() * funnyRoasts.length)] });
 });
 
-// Endpoint for personalized roast (using name)
-app.get('/roast/personalized', (req, res) => {
-  const name = req.query.name || 'Friend'; // Default to 'Friend' if no name is provided
-  const personalizedRoastsList = roast.personalizedRoasts(name);
-  const randomIndex = Math.floor(Math.random() * personalizedRoastsList.length);
-  const randomRoast = personalizedRoastsList[randomIndex];
-  res.json({ roast: randomRoast });
+app.get('/roast/personalized/:name', (req, res) => {
+  const name = req.params.name;
+  res.json({ roast: personalizedRoasts(name)[Math.floor(Math.random() * personalizedRoasts(name).length)] });
+});
+
+// Default route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Roast API! Use endpoints like /roast/savage to get roasts.');
 });
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Roast API is running on port ${port}`);
+  console.log(`Roast API is listening on port ${port}`);
 });
